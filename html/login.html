@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Users</title>
+    
+    <link href="../CSS/title_footer_left.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/fonts.css" rel="stylesheet" type="text/css">
+    <!--[if lte IE 7]>
+            <style>
+            .content { margin-right: -1px; } /* 此 1px 负边距可以放置在此布局中的任何列中，且具有相同的校正效果。 */
+            ul.nav a { zoom: 1; }  /* 缩放属性将为 IE 提供其需要的 hasLayout 触发器，用于校正链接之间的额外空白 */
+            </style>
+            <![endif]-->
+    <style>
+        body {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header"><a href="./index.html"><img src="" name="logo" width="50" height="50" id="Insert_logo" style="background: #8090AB; display:block;" alt="" /></a>
+            <!-- end .header -->
+        </div>
+        <div class="sidebar1">
+            <ul class="nav">
+                <li><a style="background-color:#9080AB ;" href="./users.html">
+                    <span style="color:#000;padding-left: 0px;" class="ico1">&#xe972 </span>
+                </a></li>
+                <li><a style="background-color:#80AB90 ;" href="./personal_introduction.html">
+                    <span style="color:#000;padding-left: 1px;" class="ico1">&#xe923 </span>
+                </a></li>
+                <li><a style="background-color:#AB9080 ;" href="./files.html">
+                    <span style="color:#000;padding-left: 1px;" class="ico1">&#xe930 </span>
+                </a></li>
+                <li><a style="background-color:#AB8090 ;" href="#">
+                    <span style="color:#000;padding-left: 0px;" class="ico1">&#xe96d </span>
+                </a></li>
+            </ul>
+            <!-- end .sidebar1 -->
+        </div>
+        <div class="content">
+        	<div style="padding-left:2em; font-family: Verdana, Arial, Helvetica, sans-serif;">
+        	<form name="login" action="../index.html" method="post" target="_blank" onsubmit="return mySubmit(this)">
+            <h3 style="margin-bottom:0px; margin-left:-10px;">
+            	Login
+            </h3>
+            <div>
+            	<input type="text" name="User_name" size="20" maxlength="18" id='name' required />
+                <br />
+              <input type="password" name="User_possword" size="20" maxlength="18" id='possword' required />
+                <br />
+            </div>
+              <input type="submit" name="submit" value="login" id='submit' />
+              <input type="reset" name="reset" value="reset" />
+	
+            </form>
+            <script>
+				var name1 = document.getElementById('name').value;
+				var submit1 = document.getElementById('submit');
+				submit1.onclick = function(){
+				}
+			</script>
+            </div>
+            <!-- end .content -->
+        </div>
+        <div class="footer">
+            <p></p>
+            <!-- end .footer -->
+        </div>
+        <!-- end .container -->
+    </div>
+</body>
+
+</html>

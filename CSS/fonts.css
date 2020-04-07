@@ -1,0 +1,18 @@
+@font-face{
+    font-family: "ico1";
+    src:url("../fonts/ico1/icomoon.eot");
+    src:url("../fonts/ico1/icomoon.eot")format("embedded-opentype")
+        ,url("../fonts/ico1/icomoon.woff")format("woff")
+        ,url("../fonts/ico1/icomoon.ttf")format("ttf")
+        ,url("../fonts/ico1/icomoon.svg")format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+.ico1{
+    font-family: "ico1";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}

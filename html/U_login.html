@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>form</title>
+	</script>
+	
+</head>
+<body>
+	<!--onsubmit事件是在提交表单时触发-->
+<!-- return 一个函数：是指当函数的返回值位false时，表单不提交，为true时提交-->
+<form action="../index.html" method="post" target="_blank" onsubmit="return mySubmit(this)">
+<!--mySumit函数中的参数this是指form调用该函数时会将form传入函数中-->
+		<input type="text" name="username" >
+		<input type="submit" name="submit" >	
+	</form>
+	<script>
+		function mySubmit(form){
+		<!--定义formData对象-->
+			let formData = new FormData(form);
+			<!--利用fromData对象的get方法获取表单数据-->
+			let username = formData.get('username');
+			<!--进行一些判断或者操作-->
+			if(username.length < 5){
+				alert('用户名不得小于5位');
+				return false;
+			}else{
+				return true;
+			}
+			return false;
+
+		}
+	</script>
+
+</body>
+</html>
