@@ -5,6 +5,102 @@ date: 2023-11-17 10:19:21
 
 善用 Tasks 可以救命喵！
 
+### 考场用简化版本
+
+#### 测试程序运行时间
+
+```json
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "C/C++ (g++, O2) 生成活动文件",
+			"command": "g++",
+			"args": [
+				"-fdiagnostics-color=always",
+				"${file}",
+				"-std=c++17",
+				"-Wall",
+				"-Wextra",
+				"-O2",
+				"-DTEST",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"problemMatcher": "$gcc"
+		},
+		{
+			"label": "Test Usage of Program",
+			"type": "process",
+			"command": "/usr/bin/time",
+			"args": [
+				"-f========\\nTime Usage\\n%es real\\n%Us user\\n%Ss sys\\nMemory Usage\\n%MKB set\\n========",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"dependsOn": ["C/C++ (g++, O2) 生成活动文件"]
+		}
+	]
+}
+
+```
+
+#### 调试
+
+注意： **需要 C/C++ 插件支持**
+
+tasks.json
+```json
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "C/C++ (g++, O2) 生成活动文件",
+			"command": "g++",
+			"args": [
+				"-fdiagnostics-color=always",
+				"${file}",
+				"-std=c++17",
+				"-Wall",
+				"-Wextra",
+				"-O2",
+				"-DTEST",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"problemMatcher": "$gcc"
+		}
+	]
+}
+
+```
+
+launch.json
+```json
+{
+	"configurations": [
+		{
+			"name": "C/C++ (gdb) 启动",
+			"type": "cppdbg",
+			"request": "launch",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"externalConsole": false,
+			"miDebuggerPath": "/usr/bin/gdb",
+			"program": "${fileDirname}/${fileBasenameNoExtension}",
+			"preLaunchTask": "C/C++ (g++) 生成活动文件",
+			"MIMode": "gdb"
+		}
+	]
+}
+
+```
+
 ### 个人自用版本
 
 ```json
@@ -145,49 +241,6 @@ date: 2023-11-17 10:19:21
 				"id": "dashboard",
 				"color": "terminal.ansiWhite"
 			}
-		}
-	]
-}
-
-```
-
-### 考场用简化版本
-
-#### 测试程序运行时间
-
-```json
-{
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "process",
-			"label": "C/C++ (g++, O2) 生成活动文件",
-			"command": "g++",
-			"args": [
-				"-fdiagnostics-color=always",
-				"${file}",
-				"-std=c++17",
-				"-Wall",
-				"-Wextra",
-				"-O2",
-				"-DTEST",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"problemMatcher": "$gcc"
-		},
-		{
-			"label": "Test Usage of Program",
-			"type": "process",
-			"command": "/usr/bin/time",
-			"args": [
-				"-f========\\nTime Usage\\n%es real\\n%Us user\\n%Ss sys\\nMemory Usage\\n%MKB set\\n========",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"dependsOn": ["C/C++ (g++, O2) 生成活动文件"]
 		}
 	]
 }
